@@ -3,6 +3,10 @@
 	"displayName": "format-auto-space",
 	"description": "format md file",
 	"version": "0.0.1",
+	"repository": {
+		"type": "git",
+		"url": "https://gitee.com/wp-uniq/format-auto-space.git"
+	},
 	"engines": {
 		"vscode": "^1.100.0"
 	},
