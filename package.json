@@ -1,0 +1,59 @@
+{
+	"name": "format",
+	"displayName": "format-auto-space",
+	"description": "format md file",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.100.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "formatSpace.helloWorld",
+				"title": "Format Space"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "formatSpace.helloWorld",
+				"key": "ctrl+s",
+				"mac": "ctrl+s",
+				"when": "editorTextFocus && (resourceExtname == .md || resourceExtname == .txt)"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"command": "formatSpace.helloWorld",
+					"when": "editorTextFocus && (resourceExtname == .md || resourceExtname == .txt)",
+					"group": "navigation"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "pnpm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "pnpm run compile && pnpm run lint",
+		"lint": "eslint src",
+		"test": "vscode-test"
+	},
+	"devDependencies": {
+		"@types/mocha": "^10.0.10",
+		"@types/node": "20.x",
+		"@types/vscode": "^1.100.0",
+		"@typescript-eslint/eslint-plugin": "^8.31.1",
+		"@typescript-eslint/parser": "^8.31.1",
+		"@vscode/test-cli": "^0.0.10",
+		"@vscode/test-electron": "^2.5.2",
+		"eslint": "^9.25.1",
+		"prettier": "^3.5.3",
+		"typescript": "^5.8.3"
+	}
+}
