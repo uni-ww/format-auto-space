@@ -1,6 +1,6 @@
 ## 初始化
 
-### 全局安装 yo 和 generator-code 两个库（推荐使用node18以上环境）
+### 全局安装 yo 和 generator-code 两个库（推荐使用 node18 以上环境）
 
 npm install -g yo generator-code
 
@@ -139,5 +139,5 @@ vsce package
 
 ## 参考链接
 
-[vscode插件开发](https://juejin.cn/post/7435927399634534452)
-[vscode文档](https://code.visualstudio.com/api)
+- [vscode 插件开发](https://juejin.cn/post/7435927399634534452)
+- [vscode 文档](https://code.visualstudio.com/api)

@@ -1,5 +1,5 @@
 {
-	"name": "format",
+	"name": "format-auto-space",
 	"displayName": "format-auto-space",
 	"description": "format md file",
 	"version": "0.0.1",
@@ -18,13 +18,13 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "formatSpace.helloWorld",
+				"command": "formatSpace.format",
 				"title": "Format Space"
 			}
 		],
 		"keybindings": [
 			{
-				"command": "formatSpace.helloWorld",
+				"command": "formatSpace.format",
 				"key": "ctrl+s",
 				"mac": "ctrl+s",
 				"when": "editorTextFocus && (resourceExtname == .md || resourceExtname == .txt)"
@@ -33,7 +33,7 @@
 		"menus": {
 			"editor/context": [
 				{
-					"command": "formatSpace.helloWorld",
+					"command": "formatSpace.format",
 					"when": "editorTextFocus && (resourceExtname == .md || resourceExtname == .txt)",
 					"group": "navigation"
 				}
