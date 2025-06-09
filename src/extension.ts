@@ -7,9 +7,7 @@ export function activate(context: vscode.ExtensionContext) {
 	const disposable = vscode.commands.registerCommand(
 		'formatSpace.format',
 		async () => {
-			vscode.window.showInformationMessage(
-				'格式化成功'
-			);
+			vscode.window.showInformationMessage('格式化成功');
 
 			// 获取当前编辑器
 			const editor = vscode.window.activeTextEditor;
@@ -32,7 +30,28 @@ export function activate(context: vscode.ExtensionContext) {
 				document.positionAt(0),
 				document.positionAt(allText.length)
 			);
-			const formattedText = allText
+
+			// 1. 提取多行代码块（```...```）
+			const codeBlockRegex = /```[\s\S]*?```/g;
+			let codeBlocks: string[] = [];
+			let textWithoutCodeBlocks = allText.replace(codeBlockRegex, (match) => {
+				codeBlocks.push(match);
+				return `__CODE_BLOCK_${codeBlocks.length - 1}__`;
+			});
+
+			// 2. 提取行内代码（`...`），注意不要匹配多行代码块内的内容
+			const inlineCodeRegex = /`[^`\n]+`/g;
+			let inlineCodes: string[] = [];
+			textWithoutCodeBlocks = textWithoutCodeBlocks.replace(
+				inlineCodeRegex,
+				(match) => {
+					inlineCodes.push(match);
+					return `__INLINE_CODE_${inlineCodes.length - 1}__`;
+				}
+			);
+
+			// 3. 对剩余内容做格式化
+			let formattedText = textWithoutCodeBlocks
 				// 英文后面接中文，插入空格
 				.replace(/([a-zA-Z0-9]+)([\u4e00-\u9fa5])/g, '$1 $2')
 				// 中文后面接英文，插入空格
@@ -41,6 +60,18 @@ export function activate(context: vscode.ExtensionContext) {
 				.replace(/([,!?$$$_])([a-zA-Z0-9])/g, '$1 $2')
 				// 英文后面接标点符号，插入空格
 				.replace(/([a-zA-Z0-9])([,!?$$$_])/g, '$1 $2');
+
+			// 4. 还原行内代码
+			formattedText = formattedText.replace(
+				/__INLINE_CODE_(\d+)__/g,
+				(_, idx) => inlineCodes[Number(idx)]
+			);
+			// 5. 还原多行代码块
+			formattedText = formattedText.replace(
+				/__CODE_BLOCK_(\d+)__/g,
+				(_, idx) => codeBlocks[Number(idx)]
+			);
+
 			console.log('=========2222222==========', formattedText);
 
 			editor.edit((editBuilder) => {
@@ -56,4 +87,4 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 // This method is called when your extension is deactivated
-export function deactivate() { }
+export function deactivate() {}
