@@ -57,7 +57,7 @@ export function activate(context: vscode.ExtensionContext) {
 				// 中文后面接英文，插入空格
 				.replace(/([\u4e00-\u9fa5])([a-zA-Z0-9]+)/g, '$1 $2')
 				// 英文前面接标点符号（如 . , ! ? ( ) [ ] 等），插入空格
-				.replace(/([,!$$$])([a-zA-Z0-9])/g, '$1 $2');
+				.replace(/([,!{}$$])([a-zA-Z0-9])/g, '$1 $2');
 			// 英文后面接标点符号，插入空格
 			// .replace(/([a-zA-Z0-9])([,!$$$])/g, '$1 $2');
 
