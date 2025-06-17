@@ -50,7 +50,7 @@
 		"test": "vscode-test && jest",
 		"test:unit": "jest",
 		"package": "vsce package",
-		"publish": "vsce publish"
+		"publish:vs": "vsce publish"
 	},
 	"devDependencies": {
 		"@types/mocha": "^10.0.10",
