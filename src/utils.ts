@@ -30,16 +30,15 @@ export const getFormatText = (allText: string) => {
 	// .replace(/([a-zA-Z0-9])([,!$$$])/g, '$1 $2');
 
 	// 4. 还原行内代码
-	formattedText = formattedText.replace(
-		/__INLINE_CODE_(\d+)__/g,
-		(_, idx) => inlineCodes[Number(idx)]
+	formattedText = formattedText.replace(/__INLINE_CODE_(\d+)__/g, (_, idx) =>
+		inlineCodes[Number(idx)].replace(/\s*`([^`]*)`\s*/g, ' `$1` ')
 	);
 	// 5. 还原多行代码块
 	formattedText = formattedText.replace(
 		/__CODE_BLOCK_(\d+)__/g,
 		(_, idx) => codeBlocks[Number(idx)]
 	);
-	formattedText = formattedText.replace(/\s*`([^`]*)`\s*/g, ' `$1` ');
+	// formattedText = formattedText.replace(/\s+/g, ' ');
 
 	return formattedText;
 };
