@@ -1,3 +1,4 @@
 node_modules
 out
 .vscode-test
+format-auto-space-*.vsix
