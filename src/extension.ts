@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import { getFormatText } from './utils';
+import * as diff from 'diff';
 
 export function activate(context: vscode.ExtensionContext) {
 	// const configuration = vscode.workspace.getConfiguration();
@@ -26,18 +27,30 @@ export function activate(context: vscode.ExtensionContext) {
 				await vscode.commands.executeCommand('workbench.action.files.save');
 				return;
 			}
-			const allText = document.getText();
-			const fullRange = new vscode.Range(
-				document.positionAt(0),
-				document.positionAt(allText.length)
-			);
 
-			const formattedText = getFormatText(allText);
-			// console.log('=========2222222==========', formattedText);
+			const edits: vscode.TextEdit[] = [];
 
-			editor.edit((editBuilder) => {
-				editBuilder.replace(fullRange, formattedText);
-			});
+			for (let lineNum = 0; lineNum < document.lineCount; lineNum++) {
+				const originalLine = document.lineAt(lineNum).text;
+
+				// 仅对该行进行格式化
+				const formattedLine = getFormatText(originalLine);
+
+				if (formattedLine !== originalLine) {
+					// 如果有变化才生成 TextEdit
+					const range = new vscode.Range(
+						new vscode.Position(lineNum, 0),
+						new vscode.Position(lineNum, originalLine.length)
+					);
+					edits.push(new vscode.TextEdit(range, formattedLine));
+				}
+			}
+
+			if (edits.length > 0) {
+				const workspaceEdit = new vscode.WorkspaceEdit();
+				workspaceEdit.set(document.uri, edits);
+				await vscode.workspace.applyEdit(workspaceEdit);
+			}
 
 			// 手动触发保存（代替原 Ctrl+S 的保存行为）
 			await vscode.commands.executeCommand('workbench.action.files.save');

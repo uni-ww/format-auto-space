@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      diff:
+        specifier: ^8.0.2
+        version: 8.0.2
     devDependencies:
       '@types/jest':
         specifier: ^29.5.8
@@ -795,6 +799,10 @@ packages:
 
   diff@5.2.0:
     resolution: {integrity: sha512-uIFDxqpRZGZ6ThOk84hEfqWoHx2devRFvpTZcTHur85vImfaxUbTW9Ryh4CpCuDnToOP1CEtXKIgytHBPVff5A==}
+    engines: {node: '>=0.3.1'}
+
+  diff@8.0.2:
+    resolution: {integrity: sha512-sSuxWU5j5SR9QQji/o2qMvqRNYRDOcBTgsJ/DeCf4iSN4gW+gNMXM7wFIP+fdXZxoNiAnHUTGjCr+TSWXdRDKg==}
     engines: {node: '>=0.3.1'}
 
   dunder-proto@1.0.1:
@@ -3054,6 +3062,8 @@ snapshots:
   diff-sequences@29.6.3: {}
 
   diff@5.2.0: {}
+
+  diff@8.0.2: {}
 
   dunder-proto@1.0.1:
     dependencies:

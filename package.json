@@ -2,7 +2,7 @@
 	"name": "format-auto-space",
 	"displayName": "format-auto-space",
 	"description": "format md file",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"publisher": "HIOX-unique",
 	"repository": {
 		"type": "git",
@@ -53,6 +53,7 @@
 		"publish:vs": "vsce publish"
 	},
 	"devDependencies": {
+		"@types/jest": "^29.5.8",
 		"@types/mocha": "^10.0.10",
 		"@types/node": "20.x",
 		"@types/vscode": "^1.100.0",
@@ -61,10 +62,12 @@
 		"@vscode/test-cli": "^0.0.10",
 		"@vscode/test-electron": "^2.5.2",
 		"eslint": "^9.25.1",
-		"prettier": "^3.5.3",
-		"typescript": "^5.8.3",
 		"jest": "^29.7.0",
+		"prettier": "^3.5.3",
 		"ts-jest": "^29.1.1",
-		"@types/jest": "^29.5.8"
+		"typescript": "^5.8.3"
+	},
+	"dependencies": {
+		"diff": "^8.0.2"
 	}
 }
