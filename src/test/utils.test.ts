@@ -29,4 +29,17 @@ describe('getFormatText 函数测试', () => {
 		expect(getFormatText('测试   `Inner`代码块')).toBe('测试 `Inner` 代码块');
 		expect(getFormatText('测试 `Inner` 代码块')).toBe('测试 `Inner` 代码块');
 	});
+
+	// 新增：链接保持不变测试
+	test('Markdown链接保持不变', () => {
+		expect(
+			getFormatText('[测试a1测试](./这个是test%20中英文加空格s1联动的文件.md)')
+		).toBe('[测试 a1 测试](./这个是test%20中英文加空格s1联动的文件.md)');
+	});
+
+	// 新增：$符号处理测试
+	test('$符号与中文混合', () => {
+		expect(getFormatText('价格$100元')).toBe('价格 $100 元');
+		expect(getFormatText('成本$$$较高')).toBe('成本 $$$ 较高');
+	});
 });

@@ -32,11 +32,11 @@ export const getFormatText = (allText: string) => {
 	// 3. 对剩余内容做格式化
 	let formattedText = textWithoutCodeBlocks
 		// 英文后面接中文，插入空格
-		.replace(/([a-zA-Z0-9]+)([\u4e00-\u9fa5])/g, '$1 $2')
+		.replace(/([a-zA-Z0-9$]+)([\u4e00-\u9fa5])/g, '$1 $2')
 		// 中文后面接英文，插入空格
-		.replace(/([\u4e00-\u9fa5])([a-zA-Z0-9]+)/g, '$1 $2')
+		.replace(/([\u4e00-\u9fa5])([a-zA-Z0-9$]+)/g, '$1 $2')
 		// 英文前面接标点符号（如 , {}等），插入空格
-		.replace(/([,{}$$])([a-zA-Z0-9])/g, '$1 $2');
+		.replace(/([,{}])([a-zA-Z0-9])/g, '$1 $2');
 
 	// 4. 还原行内代码
 	formattedText = formattedText.replace(/__INLINE_CODE_(\d+)__/g, (_, idx) =>
