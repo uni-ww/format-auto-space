@@ -2,7 +2,7 @@
 	"name": "format-auto-space",
 	"displayName": "format-auto-space",
 	"description": "format md file",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"publisher": "HIOX-unique",
 	"repository": {
 		"type": "git",
