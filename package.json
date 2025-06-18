@@ -47,7 +47,7 @@
 		"watch": "tsc -watch -p ./",
 		"pretest": "pnpm run compile && pnpm run lint",
 		"lint": "eslint src",
-		"test": "vscode-test && jest",
+		"test": "vscode-test",
 		"test:unit": "jest",
 		"package": "vsce package",
 		"publish:vs": "vsce publish"
@@ -66,8 +66,5 @@
 		"prettier": "^3.5.3",
 		"ts-jest": "^29.1.1",
 		"typescript": "^5.8.3"
-	},
-	"dependencies": {
-		"diff": "^8.0.2"
 	}
 }

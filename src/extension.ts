@@ -1,6 +1,5 @@
 import * as vscode from 'vscode';
 import { getFormatText } from './utils';
-import * as diff from 'diff';
 
 export function activate(context: vscode.ExtensionContext) {
 	// const configuration = vscode.workspace.getConfiguration();
