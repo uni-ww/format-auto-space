@@ -1,9 +1,4 @@
-# Change Log
+# 1.0.3
 
-All notable changes to the "format" extension will be documented in this file.
-
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
-
-## [Unreleased]
-
-- Initial release
+1. 解决保存时，闪一下的问题
+2. 解决链接也会添加空格的问题
